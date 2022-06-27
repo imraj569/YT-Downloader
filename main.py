@@ -1,5 +1,5 @@
 from pytube import YouTube
-import os , sys
+import os , sys , time
 from colorama import Fore
 import colorama
 colorama.init(autoreset=True)
@@ -30,7 +30,22 @@ Git Hub:https://github.com/imraj569
 ------------------------''')
     res = input('Enter resolution of video: ')
     ClearCon()
-    file = input(Fore.YELLOW+'Enter Downloading path: ')
+    try:
+        if os.name in ('nt', 'dos'):
+            try:
+                os.mkdir('D:\YT-Downloader')
+                file = 'D:\YT-Downloader'
+            except:
+                file = 'D:\YT-Downloader' 
+        else:
+            try:  
+                os.mkdir('/sdcard/Download/YT-Downloader')
+                file = '/sdcard/Download/YT-Downloader'
+            except:
+                file = '/sdcard/Download/YT-Downloader'
+    except:
+        file = input(Fore.YELLOW+'Somthing went wrong type folder path manualy: ') 
+
     video = YouTube(url)
     tit = video.title
     ClearCon()
@@ -38,37 +53,46 @@ Git Hub:https://github.com/imraj569
         try:
             print(Fore.CYAN+f'please wait downloading {tit} in 360p...')
             video.streams.get_by_itag(18).download(file)
-            print(Fore.GREEN+'Download successful...')        
+            ClearCon()
+            print(Fore.GREEN+f'{tit} Download successful...')
+            input(Fore.YELLOW+'Press enter to continue..')          
             
         except:
-            print(Fore.RED+'somthing went wrong...')
+            print(Fore.RED+'Resolution not found try another resolution..')
 
     elif '2' in res:
         try:
             print(Fore.CYAN+f'please wait downloading {tit} in 480p...')
             video.streams.get_by_itag(135).download(file)
-            print(Fore.GREEN+'Download successful...')        
+            ClearCon()
+            print(Fore.GREEN+f'{tit} Download successful...')
+            input(Fore.YELLOW+'Press enter to continue..')        
             
         except:
-            print(Fore.RED+'somthing went wrong...')
+            print(Fore.RED+'Resolution not found try another resolution..')
 
     elif '3' in res:
         try:
             print(Fore.CYAN+f'please wait downloading {tit} in 720p...')
             video.streams.get_by_itag(22).download(file)
-            print(Fore.GREEN+'Download successful...')        
+            ClearCon()
+            print(Fore.GREEN+f'{tit} Download successful...')
+            input(Fore.YELLOW+'Press enter to continue..')        
             
         except:
-            print(Fore.RED+'somthing went wrong...')
+            print(Fore.RED+'Resolution not found try another resolution..')
 
     elif '4' in res:
         try:
             print(Fore.CYAN+f'please wait downloading {tit} in high resolution...')
             video.streams.get_highest_resolution().download(file)
-            print(Fore.GREEN+'Download successful...')        
+            ClearCon()
+            print(Fore.GREEN+f'{tit} Download successful...')
+            input(Fore.YELLOW+'Press enter to continue..')
+                  
             
         except:
-            print(Fore.RED+'somthing went wrong...')
+            print(Fore.RED+'Resolution not found try another resolution..')
 
 
     elif '5' in res:
@@ -89,4 +113,5 @@ def ClearCon():
     except:
         print('somthing want wrong')
 
-intro()
+while True:
+    intro()
