@@ -1,5 +1,5 @@
 from pytube import YouTube
-import os , sys , time
+import os , sys 
 from colorama import Fore
 import colorama
 colorama.init(autoreset=True)
@@ -23,10 +23,9 @@ Git Hub:https://github.com/imraj569
     print(Fore.CYAN+'''
 ------------------------
 [1] 360p
-[2] 480p
-[3] 720p
-[4] Highest possible !
-[5] Exit
+[2] 720p
+[3] Highest possible !
+[4] Exit
 ------------------------''')
     res = input('Enter resolution of video: ')
     ClearCon()
@@ -60,18 +59,8 @@ Git Hub:https://github.com/imraj569
         except:
             print(Fore.RED+'Resolution not found try another resolution..')
 
+    
     elif '2' in res:
-        try:
-            print(Fore.CYAN+f'please wait downloading {tit} in 480p...')
-            video.streams.get_by_itag(135).download(file)
-            ClearCon()
-            print(Fore.GREEN+f'{tit} Download successful...')
-            input(Fore.YELLOW+'Press enter to continue..')        
-            
-        except:
-            print(Fore.RED+'Resolution not found try another resolution..')
-
-    elif '3' in res:
         try:
             print(Fore.CYAN+f'please wait downloading {tit} in 720p...')
             video.streams.get_by_itag(22).download(file)
@@ -82,7 +71,7 @@ Git Hub:https://github.com/imraj569
         except:
             print(Fore.RED+'Resolution not found try another resolution..')
 
-    elif '4' in res:
+    elif '3' in res:
         try:
             print(Fore.CYAN+f'please wait downloading {tit} in high resolution...')
             video.streams.get_highest_resolution().download(file)
@@ -95,7 +84,7 @@ Git Hub:https://github.com/imraj569
             print(Fore.RED+'Resolution not found try another resolution..')
 
 
-    elif '5' in res:
+    elif '4' in res:
         print(Fore.BLUE+'Thanks for using YT downloader...')
         sys.exit()
 
